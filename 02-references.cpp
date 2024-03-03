@@ -1,5 +1,30 @@
 #include <iostream>
 
+struct Node {
+	int data;
+	Node *next;
+};
+
+// Example of returning by value 
+// Copies loc onto runtime stack 
+// then copies into 'var'
+Node getNode() {
+	Node loc{13, nullptr};
+	return loc;
+}
+
+Node *getNode() {
+	Node *np = new Node {13, nullptr};
+	return np;
+	// return new Node{13, nullptr};
+}
+
+Node *nref = getNode();
+Node &nref getNode() {
+	return *(new Node{13, nullptr});
+	delete &nref;
+}
+
 void inc(int n) {
 	++n;
 }
@@ -66,5 +91,22 @@ int main() {
 
 	delete []p3;
 
+	Node n = getNode(); // copies loc onto runtime stack
+						// copies the result of getNode();
+						// then copies into n 
+	// Returning by value (copying by value) is too expensive 
+
+	// Solution: Return by Reference 
+	
 	return 0;
 }
+
+/*
+
+Pass by Value: copy of parameter passed during use of function, changes to param to not persist outside scope
+Pass by Reference: creates alias to parameter
+	- literal cannot be passed by ref
+	- not lvalue
+	- bind const lvalue refs to literals 
+	
+*/
