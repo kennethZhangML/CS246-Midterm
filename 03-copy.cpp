@@ -8,9 +8,8 @@ Copy Constructor
 - try to call copy constructors on its fields => ONLY does shallow copies 
 
 Copy Assignment Operator
-- Cop
+- 
 */
-
 
 struct Node {
     int data;

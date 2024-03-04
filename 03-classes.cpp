@@ -13,27 +13,10 @@ Class terminology:
 Note: '::' is a scope resolution operator => LHS is a namespace or class name 
 */
 
-struct Complex {
-    private:
-        double real;
-        double imag;
-
-    public:
-        Complex(double real, double imag): real{real}, imag{imag} {}
-
-    double getReal() const;
-    double getImaginary() const;
-}
-
-void Complex::init(double read, double imag) {
-    this->real = real;
-    this->imag = imag;
-}
-
 // -----------------------------------------------------------------------------
 
 // student.cc
-export module student;
+export module Student;
 export struct Student {
     int assns, mt, final;
     float grade();
@@ -76,6 +59,7 @@ class Complex {
         double getImag() const;
         void setReal() const;
         void setImag() const;
+        ~Complex();
 
         void init(double real, double imag);
 
@@ -83,9 +67,9 @@ class Complex {
 };
 
 Complex::Complex(double real, double imag) :
-    real{real}, imag{image} {}
+    real{real}, imag{imag} {}
 
-Complex::~Complex();
+Complex::
 
 double Complex::getImag() const {
     return imag;
