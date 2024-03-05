@@ -34,4 +34,58 @@ struct LinkedList {
             }
             return current->data;
         }
+
+        class Iterator {
+            private:
+                Note *ptr;
+            
+            public:
+                Iterator(Node* node) : ptr(node) {}
+
+                int& operator*() const {
+                    if (ptr == nullptr) {
+                        std::cerr << "Dereferencing a nullptr!" << std::endl;
+                    }
+
+                    return ptr->data;
+                }
+
+                Iterator& operator++() {
+                    ptr = ptr->next;
+                    return *this;
+                }
+
+                bool operator==(const Iterator& other) const {
+                    return ptr == other.ptr;
+                }
+
+                bool operator!=(const Iterator& other) const {
+                    return !(*this == other);
+                }
+        };
+
+        Iterator begin() const {
+            return Iterator(theList);
+        }
+
+        Iterator end() const {
+            return Iterator(nullptr);
+        }
+
 };
+
+int main() {
+    List myList;
+    int listSize = 5;
+    for (int i = 0; i < listSize; ++i) {
+        myList.add(i);
+    }
+
+    for (auto it = myList.begin(); it != myList.end(); ++it) {
+        std::cout << *it << ' ';
+    }
+
+    std::cout << std::endl;
+    
+    return 0;
+}
