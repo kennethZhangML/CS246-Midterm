@@ -18,10 +18,10 @@ struct LinkedList {
         Node *theList = nullptr;
     
     public:
-        ~List() { delete theList; }
+        ~LinkedList() { delete theList; }
         
         void add(int i) {
-            theList = new Node(value, theList);
+            theList = new Node(i, theList);
         }
 
         int ith(int index) const {
@@ -37,7 +37,7 @@ struct LinkedList {
 
         class Iterator {
             private:
-                Note *ptr;
+                Node *ptr;
             
             public:
                 Iterator(Node* node) : ptr(node) {}
@@ -75,7 +75,7 @@ struct LinkedList {
 };
 
 int main() {
-    List myList;
+    LinkedList myList;
     int listSize = 5;
     for (int i = 0; i < listSize; ++i) {
         myList.add(i);
